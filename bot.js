@@ -10,6 +10,8 @@ Steem.api.setOptions({url: 'https://api.steemit.com'});
 
 bot.login(Auth.token);
 
+console.log('Silent IPFS Bot started!\n\n')
+
 bot.on('message', (message) => {
     if (message.content.startsWith('!ping')) {
         // You can customise this message to differentiate between multiple silent bots running at the same time on different servers
