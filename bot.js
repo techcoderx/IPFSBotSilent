@@ -12,6 +12,7 @@ bot.login(Auth.token);
 
 bot.on('message', (message) => {
     if (message.content.startsWith('!ping')) {
+        // You can customise this message to differentiate between multiple silent bots running at the same time on different servers
         message.channel.send('Pong :sleeping:');
     } else if (message.content.startsWith('!ipfs ')) {
         // Source video
@@ -36,7 +37,6 @@ bot.on('message', (message) => {
 
             // Get IPFS hash of source video file
             var ipfshash = jsonmeta.video.content.videohash;
-            console.log('IPFS hash obtained. Fetching video...');
             var ipfslink = 'https://video.dtube.top/ipfs/' + ipfshash;
 
             // Download file to server!
@@ -50,7 +50,7 @@ bot.on('message', (message) => {
             download.on('start',function(filesize) {
                 // Get file size in MB
                 var humanreadableFS = (filesize / 1048576).toFixed(2);
-                console.log('Video file size: ' + humanreadableFS + 'MB');
+                console.log('IPFS hash obtained. Fetching video...\nAuthor: ' + author + '\nPermlink: ' + steemitAuthorPermlink[1] + '\nVideo file size: ' + humanreadableFS + 'MB\n\n');
             });
 
             download.on('end',function() {
@@ -87,7 +87,6 @@ bot.on('message', (message) => {
             var jsonmeta = JSON.parse(result.json_metadata);
 
             var ipfs240hash = jsonmeta.video.content.video240hash;
-            console.log('240p IPFS hash obtained. Fetching video...');
             var ipfslink = 'https://video.dtube.top/ipfs/' + ipfs240hash;
 
             // Download file to server!
@@ -101,7 +100,7 @@ bot.on('message', (message) => {
             download.on('start',function(filesize) {
                 // Get file size in MB
                 var humanreadableFS = (filesize / 1048576).toFixed(2);
-                console.log('Video file size: ' + humanreadableFS + 'MB');
+                console.log('240p IPFS hash obtained. Fetching video...\nAuthor: ' + author + '\nPermlink: ' + steemitAuthorPermlink[1] + '\nVideo file size: ' + humanreadableFS + 'MB\n\n');
             });
 
             download.on('end',function() {
@@ -139,7 +138,6 @@ bot.on('message', (message) => {
             var jsonmeta = JSON.parse(result.json_metadata);
 
             var ipfs480hash = jsonmeta.video.content.video480hash;
-            console.log('480p IPFS hash obtained. Fetching video...');
             var ipfslink = 'https://video.dtube.top/ipfs/' + ipfs480hash;
 
             // Download file to server!
@@ -153,7 +151,7 @@ bot.on('message', (message) => {
             download.on('start',function(filesize) {
                 // Get file size in MB
                 var humanreadableFS = (filesize / 1048576).toFixed(2);
-                console.log('Video file size: ' + humanreadableFS + 'MB');
+                console.log('480p IPFS hash obtained. Fetching video...\nAuthor: ' + author + '\nPermlink: ' + steemitAuthorPermlink[1] + '\nVideo file size: ' + humanreadableFS + 'MB\n\n');
             });
 
             download.on('end',function() {
@@ -190,7 +188,6 @@ bot.on('message', (message) => {
             var jsonmeta = JSON.parse(result.json_metadata);
 
             var ipfs720hash = jsonmeta.video.content.video720hash;
-            console.log('720p IPFS hash obtained. Fetching video...');
             var ipfslink = 'https://video.dtube.top/ipfs/' + ipfs720hash;
 
             // Download file to server!
@@ -204,7 +201,7 @@ bot.on('message', (message) => {
             download.on('start',function(filesize) {
                 // Get file size in MB
                 var humanreadableFS = (filesize / 1048576).toFixed(2);
-                console.log('Video file size: ' + humanreadableFS + 'MB');
+                console.log('720p IPFS hash obtained. Fetching video...\nAuthor: ' + author + '\nPermlink: ' + steemitAuthorPermlink[1] + '\nVideo file size: ' + humanreadableFS + 'MB\n\n');
             });
 
             download.on('end',function() {
@@ -241,7 +238,6 @@ bot.on('message', (message) => {
             var jsonmeta = JSON.parse(result.json_metadata);
 
             var ipfs1080hash = jsonmeta.video.content.video1080hash;
-            console.log('1080p IPFS hash obtained. Fetching video...');
             var ipfslink = 'https://video.dtube.top/ipfs/' + ipfs1080hash;
 
             // Download file to server!
@@ -255,7 +251,7 @@ bot.on('message', (message) => {
             download.on('start',function(filesize) {
                 // Get file size in MB
                 var humanreadableFS = (filesize / 1048576).toFixed(2);
-                console.log('Video file size: ' + humanreadableFS + 'MB');
+                console.log('1080p IPFS hash obtained. Fetching video...\nAuthor: ' + author + '\nPermlink: ' + steemitAuthorPermlink[1] + '\nVideo file size: ' + humanreadableFS + 'MB\n\n');
             });
 
             download.on('end',function() {
@@ -291,7 +287,6 @@ bot.on('message', (message) => {
             var jsonmeta = JSON.parse(result.json_metadata);
 
             var dsoundhash = jsonmeta.audio.files.sound;
-            console.log('DSound audio IPFS hash obtained. Fetching video...');
             var dsoundipfslink = 'https://ipfs.io/ipfs/' + dsoundhash;
 
             // Download video to server!
@@ -305,7 +300,7 @@ bot.on('message', (message) => {
             download.on('start',function(filesize) {
                 // Get filesize in MB
                 var humanreadableFS = (filesize / 1048576).toFixed(2);
-                console.log('Audio file size: ' + humanreadableFS + 'MB');
+                console.log('DSound audio IPFS hash obtained. Fetching audio...\nAuthor: ' + author + '\nPermlink: ' + steemitAuthorPermlink[1] + '\nAudio file size: ' + humanreadableFS + 'MB\n\n');
             });
 
             download.on('end',function() {
